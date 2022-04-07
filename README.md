@@ -33,7 +33,7 @@ Imágenes preparadas para OpenShift:
 
 * Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
 
-* Los ConfigMaps son como ficheros de propiedades, mientras que los Secrets son como los ConfigMaps, pero con los datos codificados en Base64 (ojo, no están encriptados).
+* Los ConfigMaps son como ficheros de propiedades, mientras que los Secrets son como los ConfigMaps pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ## 2. Flujos de creación de aplicaciones
 
