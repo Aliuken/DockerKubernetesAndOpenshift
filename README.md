@@ -1,1 +1,326 @@
 # Documentación de Docker, Kubernetes y OpenShift
+
+## 1. Introducción
+
+### 1.1. Resumen organización empresas:
+* 1 entorno (TST, PRE o PRO) contiene n datacenters
+* 1 datacenter contiene n clusters (normalmente hay un único cluster por datacenter)
+* 1 aplicación contiene n componentes
+* 1 aplicación expone n servicios
+
+### 1.2. Resumen Kubernetes / OpenShift:
+* 1 project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
+* 1 cluster contiene n nodos
+* 1 nodo contiene n pods (configurados con los deployments)
+* 1 deployment es una configuración para levantar réplicas de pods en el cluster
+* 1 pod contiene n contenedores docker (aunque casi siempre contiene sólo 1 contenedor)
+* 1 service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado 1 deployment y hace de intermediario con los pods replicados de un deployment)
+* 1 route es la alternativa de OpenShift a los ingress de Kubernetes
+* 1 route es un mapeo de 1 tupla [URL + puerto] a 1 service
+
+### 1.3. Repositorios de imágenes:
+Imágenes docker:
+* https://hub.docker.com/
+
+Imágenes preparadas para OpenShift:
+* https://quay.io/
+* https://catalog.redhat.com/software/containers/search
+* https://www.softwarecollections.org/en/
+
+### 1.4. Teoría extendida
+
+* La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+
+* Los ConfigMaps son como ficheros de propiedades, mientras que los Secrets son como los ConfigMaps, pero con los datos codificados en Base64 (ojo, no están encriptados).
+
+## 2. Flujos de creación de aplicaciones
+
+### 2.1. Crear project
+
+oc new-project p1
+```
+Now using project "p1" on server "https://api.crc.testing:6443".
+
+You can add applications to this project with the 'new-app' command. For example, try:
+
+    oc new-app rails-postgresql-example
+
+to build a new example application in Ruby. Or use kubectl to deploy a simple Kubernetes application:
+
+    kubectl create deployment hello-node --image=k8s.gcr.io/serve_hostname
+```
+
+oc project
+```
+Using project "p1" on server "https://api.crc.testing:6443".
+```
+
+### 2.2. Crear todo lo necesario paso a paso
+
+#### 2.2.1. Procedimiento
+
+oc create deployment nginx1 --image quay.io/bitnami/nginx
+```
+deployment.apps/nginx1 created
+```
+
+oc scale deployment nginx1 --replicas 3
+```
+deployment.apps/nginx1 scaled
+```
+
+oc expose deploy nginx1 --name nginx1-svc --type NodePort --port 30205
+```
+service/nginx1-svc exposed
+```
+
+oc expose service nginx1-svc --name nginx1-route
+```
+route.route.openshift.io/nginx1-route exposed
+```
+
+#### 2.2.2. Comprobar elementos creados
+
+oc get deployment
+```
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+nginx1   3/3     3            3           2m3s
+```
+
+oc get replicaset
+```
+NAME                DESIRED   CURRENT   READY   AGE
+nginx1-5db5f9f979   3         3         3       2m24s
+```
+
+oc get pod
+```
+NAME                      READY   STATUS    RESTARTS   AGE
+nginx1-5db5f9f979-82sn2   1/1     Running   0          92s
+nginx1-5db5f9f979-hkr8d   1/1     Running   0          92s
+nginx1-5db5f9f979-rc5vr   1/1     Running   0          2m49s
+```
+
+oc get pod -o wide | grep master (consultar pods del nodo master)
+```
+nginx1-5db5f9f979-82sn2   1/1     Running   0          2m1s    10.217.0.224   crc-dzk9v-master-0   <none>           <none>
+nginx1-5db5f9f979-hkr8d   1/1     Running   0          2m1s    10.217.0.225   crc-dzk9v-master-0   <none>           <none>
+nginx1-5db5f9f979-rc5vr   1/1     Running   0          3m18s   10.217.0.223   crc-dzk9v-master-0   <none>           <none>
+```
+
+oc get service
+```
+NAME         TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)           AGE
+nginx1-svc   NodePort   10.217.5.68   <none>        30205:31114/TCP   44s
+```
+
+oc get route
+```
+NAME           HOST/PORT                          PATH   SERVICES     PORT    TERMINATION   WILDCARD
+nginx1-route   nginx1-route-p1.apps-crc.testing          nginx1-svc   30205                 None
+```
+
+### 2.3. Crear todo lo necesario de golpe
+
+#### 2.3.1. Procedimiento a partir de una imagen en DockerHub
+
+oc new-app --name blog1 apasoft/blog
+```
+--> Found container image 5ada8e2 (2 years old) from Docker Hub for "apasoft/blog"
+
+    Python 3.5
+    ----------
+    Python 3.5 available as container is a base platform for building and running various Python 3.5 applications and frameworks. Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
+
+    Tags: builder, python, python35, python-35, rh-python35
+
+    * An image stream tag will be created as "blog1:latest" that will track this image
+
+--> Creating resources ...
+    imagestream.image.openshift.io "blog1" created
+    deployment.apps "blog1" created
+    service "blog1" created
+--> Success
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/blog1'
+    Run 'oc status' to view your app.
+```
+
+oc expose service/blog1
+```
+route.route.openshift.io/blog1 exposed
+```
+
+#### 2.3.2 Procedimiento a partir de código en GitHub con Dockerfile
+
+oc new-app --name blog2 https://github.com/almase/blog-1 --strategy=docker
+```
+--> Found container image 602660f (18 months old) from Docker Hub for "centos/python-36-centos7:latest"
+
+    Python 3.6
+    ----------
+    Python 3.6 available as container is a base platform for building and running various Python 3.6 applications and frameworks. Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
+
+    Tags: builder, python, python36, python-36, rh-python36
+
+    * An image stream tag will be created as "python-36-centos7:latest" that will track the source image
+    * A Docker build using source code from https://github.com/almase/blog-1 will be created
+      * The resulting image will be pushed to image stream tag "blog2:latest"
+      * Every time "python-36-centos7:latest" changes a new build will be triggered
+
+--> Creating resources ...
+    imagestream.image.openshift.io "python-36-centos7" created
+    imagestream.image.openshift.io "blog2" created
+    buildconfig.build.openshift.io "blog2" created
+    deployment.apps "blog2" created
+    service "blog2" created
+--> Success
+    Build scheduled, use 'oc logs -f buildconfig/blog2' to track its progress.
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/blog2'
+    Run 'oc status' to view your app.
+```
+
+oc expose service/blog2
+```
+route.route.openshift.io/blog2 exposed
+```
+
+#### 2.3.3. Comprobar elementos creados
+
+oc get buildconfig
+```
+NAME    TYPE     FROM   LATEST
+blog2   Docker   Git    1
+```
+
+oc get build
+```
+NAME      TYPE     FROM          STATUS     STARTED          DURATION
+blog2-1   Docker   Git@bc87e85   Complete   11 minutes ago   3m2s
+```
+
+oc get deployment
+```
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+blog1   1/1     1            1           13m
+blog2   1/1     1            1           12m
+```
+
+oc get replicaset
+```
+NAME               DESIRED   CURRENT   READY   AGE
+blog1-78745898c4   1         1         1       14m
+blog1-7f989fd9f7   0         0         0       14m
+blog2-57f544b445   0         0         0       12m
+blog2-5dbf79c66d   1         1         1       9m40s
+```
+
+oc get pod
+```
+NAME                     READY   STATUS      RESTARTS   AGE
+blog1-78745898c4-8p7t9   1/1     Running     0          14m
+blog2-1-build            0/1     Completed   0          13m
+blog2-5dbf79c66d-b8tgn   1/1     Running     0          10m
+```
+
+oc get service
+```
+NAME    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+blog1   ClusterIP   10.217.5.208   <none>        8080/TCP   15m
+blog2   ClusterIP   10.217.4.189   <none>        8080/TCP   13m
+```
+  
+oc get route
+```
+NAME    HOST/PORT                   PATH   SERVICES   PORT       TERMINATION   WILDCARD
+blog1   blog1-p1.apps-crc.testing          blog1      8080-tcp                 None
+blog2   blog2-p1.apps-crc.testing          blog2      8080-tcp                 None
+```
+
+oc get imagestream
+```
+NAME                IMAGE REPOSITORY                                                               TAGS     UPDATED
+blog1               default-route-openshift-image-registry.apps-crc.testing/p1/blog1               latest   9 minutes ago
+blog2               default-route-openshift-image-registry.apps-crc.testing/p1/blog2               latest   4 minutes ago
+python-36-centos7   default-route-openshift-image-registry.apps-crc.testing/p1/python-36-centos7   latest   7 minutes ago
+```
+
+oc get imagestreamtag
+```
+NAME                       IMAGE REFERENCE                                                                                                                     UPDATED
+blog1:latest               apasoft/blog@sha256:9c8d3cedcd722ae6a9508ca532102501dfb796600c53a61d5178cdfaf22e02ed                                                About an hour ago
+blog2:latest               image-registry.openshift-image-registry.svc:5000/p1/blog2@sha256:7dff1f108e0bd79fb3c2ca3ee94ac59496df7652bf14d37a622d9d6936d630fd   About an hour ago
+python-36-centos7:latest   centos/python-36-centos7@sha256:ac50754646f0d37616515fb30467d8743fb12954260ec36c9ecb5a94499447e0                                    About an hour ago
+```
+
+### 2.4. Crear ConfigMaps y Secrets
+
+#### 2.4.1. Crear ConfigMaps
+
+nano propiedades.txt
+```
+V1=hola
+V2=adios
+```
+
+oc create configmap cm1 --from-env-file=propiedades.txt
+```
+configmap/cm1 created
+```
+
+oc get configmap
+```
+NAME                       DATA   AGE
+blog2-1-ca                 2      9m52s
+blog2-1-global-ca          1      9m52s
+blog2-1-sys-config         0      9m52s
+cm1                        2      30s
+kube-root-ca.crt           1      16m
+openshift-service-ca.crt   1      16m
+```
+
+oc get configmap cm1
+```
+NAME   DATA   AGE
+cm1    2      56s
+```
+
+#### 2.4.2. Crear Secrets
+
+nano secretos.txt
+```
+V3=¿qué tal?
+V4=¿cómo estás?
+```
+
+oc create secret generic secreto1 --from-env-file=secrets.txt
+```
+error: error reading secrets.txt: no such file or directory
+```
+
+oc create secret generic secreto1 --from-env-file=secretos.txt
+```
+secret/secreto1 created
+```
+
+oc get secret
+```
+NAME                       TYPE                                  DATA   AGE
+builder-dockercfg-hjq7n    kubernetes.io/dockercfg               1      38m
+builder-token-dhjzm        kubernetes.io/service-account-token   4      38m
+builder-token-pbjht        kubernetes.io/service-account-token   4      38m
+default-dockercfg-bvzxw    kubernetes.io/dockercfg               1      38m
+default-token-652xx        kubernetes.io/service-account-token   4      38m
+default-token-79jx4        kubernetes.io/service-account-token   4      38m
+deployer-dockercfg-nr5h9   kubernetes.io/dockercfg               1      38m
+deployer-token-5hmzq       kubernetes.io/service-account-token   4      38m
+deployer-token-j86nz       kubernetes.io/service-account-token   4      38m
+secreto1                   Opaque                                2      8s
+```
+
+oc get secret secreto1
+```
+NAME       TYPE     DATA   AGE
+secreto1   Opaque   2      15s
+```
