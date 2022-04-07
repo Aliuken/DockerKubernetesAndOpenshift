@@ -31,6 +31,8 @@ Imágenes preparadas para OpenShift:
 
 * La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
+* Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
+
 * Los ConfigMaps son como ficheros de propiedades, mientras que los Secrets son como los ConfigMaps, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ## 2. Flujos de creación de aplicaciones
