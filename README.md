@@ -103,7 +103,7 @@ nginx1-5db5f9f979-hkr8d   1/1     Running   0          92s
 nginx1-5db5f9f979-rc5vr   1/1     Running   0          2m49s
 ```
 
-oc get pod -o wide | grep master (consultar pods del nodo master)
+oc get pod -o wide | grep master **(consultar pods del nodo master)**
 ```
 nginx1-5db5f9f979-82sn2   1/1     Running   0          2m1s    10.217.0.224   crc-dzk9v-master-0   <none>           <none>
 nginx1-5db5f9f979-hkr8d   1/1     Running   0          2m1s    10.217.0.225   crc-dzk9v-master-0   <none>           <none>
