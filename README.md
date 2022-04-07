@@ -294,11 +294,6 @@ V3=¿qué tal?
 V4=¿cómo estás?
 ```
 
-oc create secret generic secreto1 --from-env-file=secrets.txt
-```
-error: error reading secrets.txt: no such file or directory
-```
-
 oc create secret generic secreto1 --from-env-file=secretos.txt
 ```
 secret/secreto1 created
