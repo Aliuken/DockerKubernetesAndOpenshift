@@ -282,6 +282,7 @@ oc rsh blog2-5dbf79c66d-b8tgn
 
 * **(app-root) sh-4.2$** env
   ```
+  BLOG1_SERVICE_PORT=8080
   BLOG2_SERVICE_PORT=8080
   ...
   ```
