@@ -151,7 +151,7 @@ oc expose service/blog1
 route.route.openshift.io/blog1 exposed
 ```
 
-#### 2.3.2 Procedimiento a partir de código en GitHub con Dockerfile
+#### 2.3.2. Procedimiento a partir de código en GitHub con Dockerfile
 
 oc new-app --name blog2 https://github.com/almase/blog-1 --strategy=docker
 ```
