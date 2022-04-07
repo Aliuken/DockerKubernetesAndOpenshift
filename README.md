@@ -255,12 +255,12 @@ python-36-centos7:latest   centos/python-36-centos7@sha256:ac50754646f0d37616515
 ```
 
 oc rsh blog2-5dbf79c66d-b8tgn
-* (app-root) sh-4.2$ pwd
+* **(app-root) sh-4.2$** pwd
   ```
   /opt/app-root/src
   ```
 
-* (app-root) sh-4.2$ ls -l
+* **(app-root) sh-4.2$** ls -l
   ```
   total 76
   -rwxrwxr-x. 1 default    root  1454 Apr  7 15:04 app.sh
@@ -280,13 +280,13 @@ oc rsh blog2-5dbf79c66d-b8tgn
   drwxrwxr-x. 2 default    root   148 Apr  7 15:04 templates
   ```
 
-* (app-root) sh-4.2$ env
+* **(app-root) sh-4.2$** env
   ```
   BLOG2_SERVICE_PORT=8080
   ...
   ```
 
-* (app-root) sh-4.2$ exit
+* **(app-root) sh-4.2$** exit
   ```
   exit
   ```
