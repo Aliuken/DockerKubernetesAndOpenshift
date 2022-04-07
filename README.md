@@ -255,39 +255,41 @@ python-36-centos7:latest   centos/python-36-centos7@sha256:ac50754646f0d37616515
 ```
 
 oc rsh blog2-5dbf79c66d-b8tgn
-(app-root) sh-4.2$ pwd
-```
-/opt/app-root/src
-```
-(app-root) sh-4.2$ ls -l
-```
-total 76
--rwxrwxr-x. 1 default    root  1454 Apr  7 15:04 app.sh
-drwxrwxr-x. 1 default    root    43 Apr  7 15:06 blog
-drwxrwxr-x. 2 default    root    25 Apr  7 15:04 configs
--rw-rw-r--. 1 default    root   230 Apr  7 15:04 cronjobs.py
--rw-r--r--. 1 1000680000 root 44032 Apr  7 15:07 db.sqlite3
--rw-rw-r--. 1 default    root  1126 Apr  7 15:04 Dockerfile
-drwxrwxr-x. 2 default    root    25 Apr  7 15:04 htdocs
-drwxrwxr-x. 1 default    root    25 Apr  7 15:06 katacoda
--rwxrwxr-x. 1 default    root   806 Apr  7 15:04 manage.py
-drwxrwxr-x. 3 default    root    20 Apr  7 15:06 media
--rw-rw-r--. 1 default    root   832 Apr  7 15:04 posts.json
--rw-rw-r--. 1 default    root  7861 Apr  7 15:04 README.md
--rw-rw-r--. 1 default    root   203 Apr  7 15:04 requirements.txt
-drwxrwxr-x. 4 default    root    30 Apr  7 15:06 static
-drwxrwxr-x. 2 default    root   148 Apr  7 15:04 templates
-```
-(app-root) sh-4.2$ env
-```
-BLOG2_SERVICE_PORT=8080
-...
-```
+* (app-root) sh-4.2$ pwd
+  ```
+  /opt/app-root/src
+  ```
 
-(app-root) sh-4.2$ exit
-```
-exit
-```
+* (app-root) sh-4.2$ ls -l
+  ```
+  total 76
+  -rwxrwxr-x. 1 default    root  1454 Apr  7 15:04 app.sh
+  drwxrwxr-x. 1 default    root    43 Apr  7 15:06 blog
+  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 configs
+  -rw-rw-r--. 1 default    root   230 Apr  7 15:04 cronjobs.py
+  -rw-r--r--. 1 1000680000 root 44032 Apr  7 15:07 db.sqlite3
+  -rw-rw-r--. 1 default    root  1126 Apr  7 15:04 Dockerfile
+  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 htdocs
+  drwxrwxr-x. 1 default    root    25 Apr  7 15:06 katacoda
+  -rwxrwxr-x. 1 default    root   806 Apr  7 15:04 manage.py
+  drwxrwxr-x. 3 default    root    20 Apr  7 15:06 media
+  -rw-rw-r--. 1 default    root   832 Apr  7 15:04 posts.json
+  -rw-rw-r--. 1 default    root  7861 Apr  7 15:04 README.md
+  -rw-rw-r--. 1 default    root   203 Apr  7 15:04 requirements.txt
+  drwxrwxr-x. 4 default    root    30 Apr  7 15:06 static
+  drwxrwxr-x. 2 default    root   148 Apr  7 15:04 templates
+  ```
+
+* (app-root) sh-4.2$ env
+  ```
+  BLOG2_SERVICE_PORT=8080
+  ...
+  ```
+
+* (app-root) sh-4.2$ exit
+  ```
+  exit
+  ```
 
 ### 2.4. Crear ConfigMaps y Secrets
 
