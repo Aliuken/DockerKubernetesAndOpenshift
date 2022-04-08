@@ -6,10 +6,13 @@
 Imágenes docker:
 * https://hub.docker.com/
 
-Imágenes preparadas para OpenShift:
+Imágenes docker preparadas para OpenShift:
 * https://quay.io/
 * https://catalog.redhat.com/software/containers/search
 * https://www.softwarecollections.org/en/
+
+Especificación de Open Container Intitiative:
+* https://opencontainers.org
 
 ### 1.2. Resumen organización empresas:
 * Un entorno (TST, PRE o PRO) contiene n datacenters
