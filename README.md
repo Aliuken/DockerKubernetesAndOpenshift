@@ -108,7 +108,7 @@ Especificación de Open Container Intitiative:
   2. El cliente llama a la IP del servidor web (usando el puerto 80) pasándole la URL solicitada.
   3. El servidor web llama a la ruta asociada a la URL solicitada y puerto 80.
   4. La ruta llama a su servicio asociado (por ejemplo Servicio_tomcat).
-  5. El servicio llama a alguno de los pods del deployment (por ejemplo Tomcat) usando el puerto interno (8080).
+  5. El servicio llama a alguno de los pods del deployment (en el ejemplo el deployment sería Tomcat) usando el puerto interno (8080).
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png)
 
