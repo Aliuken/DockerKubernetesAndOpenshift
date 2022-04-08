@@ -24,10 +24,10 @@ Especificación de Open Container Intitiative:
 * Un cluster contiene n nodos.
 * Un nodo contiene n pods (configurados con los deployments).
 * Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes.
-* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
 * Un contenedor docker es una imagen docker en ejecución.
+* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
 * Un deployment es una configuración para levantar réplicas de pods en el cluster.
-* Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods.
+* Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
 * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
 * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
 * Una route es la alternativa de OpenShift a los ingress de Kubernetes.
@@ -42,8 +42,8 @@ Especificación de Open Container Intitiative:
 * **Descripción general**
 
   Repaso:
-  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
   * Un contenedor docker es una imagen docker en ejecución.
+  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
 
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
@@ -67,7 +67,7 @@ Especificación de Open Container Intitiative:
 
   Repaso:
   * Un deployment es una configuración para levantar réplicas de pods en el cluster.
-  * Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods.
+  * Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
 
   No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
 
