@@ -32,9 +32,9 @@ Imágenes preparadas para OpenShift:
 
 #### 1.4.1. Pods
 
-**Descripción general**
+  **Descripción general**
 
-![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
+  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
 **Ciclo de vida**
 
