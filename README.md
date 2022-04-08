@@ -13,6 +13,7 @@
 * Un cluster contiene n nodos
 * Un nodo contiene n pods (configurados con los deployments)
 * Un deployment es una configuración para levantar réplicas de pods en el cluster
+* Un deployment contiene un ReplicaSet
 * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor)
 * Un contenedor docker es una imagen docker en ejecución
 * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment)
