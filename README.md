@@ -69,6 +69,8 @@ Especificación de Open Container Intitiative:
   * Un deployment es una configuración para levantar réplicas de pods en el cluster.
   * Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods.
 
+  No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
+
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png)
 
 * **Problemas de los deployments**
@@ -101,7 +103,7 @@ Especificación de Open Container Intitiative:
 
   Los problemas de los services se solucionan creando n routes para los n services.
   
-  La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+  La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente, ya que sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
   
   El flujo final es el siguiente:
   1. El cliente llama al DNS con un dominio concreto para obtener la IP del servidor web.
