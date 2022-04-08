@@ -126,7 +126,7 @@ Especificación de Open Container Intitiative:
 
 * **BuildConfig y Build (componentes opcionales al crear una aplicación)**
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="700">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="650">
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="700">
 
