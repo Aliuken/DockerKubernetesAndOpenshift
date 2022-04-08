@@ -47,6 +47,7 @@ Especificación de Open Container Intitiative:
 
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png" width="250">
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
 * **Ciclo de vida**
