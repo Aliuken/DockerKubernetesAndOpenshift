@@ -97,7 +97,7 @@ Imágenes preparadas para OpenShift:
 
 #### 1.4.6. ConfigMaps y Secrets
 
-* **Descipción**
+* **Descripción**
 
   Los ConfigMaps son como ficheros de propiedades.
 
