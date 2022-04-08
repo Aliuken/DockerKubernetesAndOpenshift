@@ -40,7 +40,7 @@ Ciclo de vida
 
 ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png)
 
-* Los componentes de OpenShift (buildconfig, build, deployment, replicaset, pod, service, route, imagestream, imagestreamtag, configmap, secret...) pueden ser creados de forma imperativa (informando sus campos en la propia instrucción de creación) o declarativa (mediante el uso de YAML).
+* Los componentes de OpenShift (buildconfig, build, deployment, replicaset, pod, service, route, imagestream, imagestreamtag, configmap, secret...) pueden ser creados de **forma imperativa** (informando sus campos en la propia instrucción de creación) o de **forma declarativa** (mediante el uso de YAML).
 
 * Al crear un componente de forma declarativa se indica su estado deseado y OpenShift (al igual que Kubernetes) hará lo posible en todo momento para alcanzar dicho estado.
 
