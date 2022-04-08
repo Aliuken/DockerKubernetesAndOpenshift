@@ -34,6 +34,7 @@ Imágenes preparadas para OpenShift:
 
 Descripción general
 
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
 * Los pods deben tener un puerto por encima del 1024.
 
