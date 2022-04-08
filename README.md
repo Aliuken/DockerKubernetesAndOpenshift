@@ -27,8 +27,8 @@ Especificación de Open Container Intitiative:
 * Acerca de clusters:
   * Un cluster contiene n nodos.
   * Un nodo contiene n pods (configurados con los deployments).
-  * Un contenedor docker es una imagen docker en ejecución.
-  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
+  * Un pod contiene n contenedores Docker (aunque casi siempre contiene sólo un contenedor Docker).
+  * Un contenedor Docker es una imagen docker en ejecución.
 
 * Acerca de projects:
   * Los distintos componentes de OpenShift están agrupados en projects.
