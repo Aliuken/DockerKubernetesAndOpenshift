@@ -59,7 +59,7 @@ Especificación de Open Container Intitiative:
 
 * **Problemas de los pods**
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png" width="800">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png" width="350">
 
 #### 1.4.2. Deployments
 
@@ -71,7 +71,7 @@ Especificación de Open Container Intitiative:
 
   No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png" width="800">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png" width="500">
 
 * **Problemas de los deployments**
 
@@ -126,9 +126,9 @@ Especificación de Open Container Intitiative:
 
 * **BuildConfig y Build (componentes opcionales al crear una aplicación)**
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="800">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="700">
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="800">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="700">
 
 #### 1.4.6. ConfigMaps y Secrets
 
