@@ -240,7 +240,7 @@ Al generar todos los componentes de una aplicación de golpe (partiendo de una i
 
 Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (partiendo de una imagen docker) es el siguiente:
 
-<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creacion_app_de_imagen.png" width="800">
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creación_app_de_imagen.png" width="800">
 
 Como se observa, al partir de una imagen docker, se generan a mayores los siguientes componentes:
 * BuildConfig
