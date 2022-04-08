@@ -32,13 +32,46 @@ Imágenes preparadas para OpenShift:
 
 #### 1.4.1. Pods
 
-Descripción general
+**Descripción general**
 
 ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
-Ciclo de vida
+**Ciclo de vida**
 
 ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png)
+
+**Problemas de los pods**
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png)
+
+#### 1.4.2. Deployments
+
+**Solución a los problemas de los pods**
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png)
+
+**Problemas de los deployments**
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png)
+
+#### 1.4.3. Services
+
+**Solución a los problemas de los deployments**
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png)
+
+**Problemas de los services**
+
+En los services no se suele poner el puerto 80 porque de ese modo no podría haber más de un service en el puerto 80.
+Por tanto, un service te ata a un puerto que no es el 80 (en el ejemplo, el 30205).
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_servicio.png)
+
+#### 1.4.4. Routes
+
+**Solución a los problemas de los services**
+
+![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png)
 
 * Los componentes de OpenShift (buildconfig, build, deployment, replicaset, pod, service, route, imagestream, imagestreamtag, configmap, secret...) pueden ser creados de **forma imperativa** (informando sus campos en la propia instrucción de creación) o de **forma declarativa** (mediante el uso de YAML).
 
