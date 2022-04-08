@@ -149,7 +149,7 @@ Repaso:
 
 <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="700">
 
-Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (a partir de una imagen docker) es el siguiente:
+Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (a partir de una imagen Docker) es el siguiente:
 
 <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creación_app_de_imagen.png" width="800">
 
