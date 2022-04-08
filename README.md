@@ -128,7 +128,7 @@ Especificación de Open Container Intitiative:
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="650">
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="700">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="750">
 
 #### 1.4.6. ConfigMaps y Secrets
 
