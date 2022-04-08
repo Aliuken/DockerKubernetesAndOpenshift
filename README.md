@@ -68,8 +68,8 @@ En la siguiente imagen se muestran los componentes obligatorios al crear una apl
 * **Descripción general**
 
   Repaso:
-  * Un contenedor docker es una imagen docker en ejecución.
-  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
+  * Un pod contiene n contenedores Docker (aunque casi siempre contiene sólo un contenedor Docker).
+  * Un contenedor Docker es una imagen docker en ejecución.
 
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
