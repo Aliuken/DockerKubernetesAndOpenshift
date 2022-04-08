@@ -48,7 +48,6 @@ Especificación de Open Container Intitiative:
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png" width="800">
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
 * **Ciclo de vida**
 
@@ -56,11 +55,11 @@ Especificación de Open Container Intitiative:
 
   Al crear un componente de forma declarativa se indica su estado deseado y OpenShift (al igual que Kubernetes) hará lo posible en todo momento para alcanzar dicho estado.
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png" width="800">
 
 * **Problemas de los pods**
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png" width="800">
 
 #### 1.4.2. Deployments
 
@@ -72,11 +71,11 @@ Especificación de Open Container Intitiative:
 
   No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png" width="800">
 
 * **Problemas de los deployments**
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png" width="800">
 
 #### 1.4.3. Services
 
@@ -86,13 +85,13 @@ Especificación de Open Container Intitiative:
   * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
   * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png" width="800">
 
 * **Problemas de los services**
 
   En los services no se suele poner el puerto 80 porque de ese modo no podría haber más de un service en el puerto 80. Por tanto, un service te ata a un puerto que no es el 80 (en el ejemplo, el 30205).
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_servicio.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_servicio.png" width="800">
 
 #### 1.4.4. Routes
 
@@ -113,7 +112,7 @@ Especificación de Open Container Intitiative:
   4. La ruta llama a su servicio asociado (por ejemplo Servicio_tomcat).
   5. El servicio llama a alguno de los pods del deployment (en el ejemplo el deployment sería Tomcat) usando el puerto interno (8080).
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png" width="800">
 
 #### 1.4.5. Componentes de una aplicación
 
@@ -123,13 +122,13 @@ Especificación de Open Container Intitiative:
   
   Como se comentó anteriormente, la creación de la route es opcional y manual.
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png" width="800">
 
 * **BuildConfig y Build (componentes opcionales al crear una aplicación)**
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="800">
 
-  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png)
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="800">
 
 #### 1.4.6. ConfigMaps y Secrets
 
