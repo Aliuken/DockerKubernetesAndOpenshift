@@ -236,11 +236,19 @@ nginx1-route   nginx1-route-p1.apps-crc.testing          nginx1-svc   30205     
 
 Al generar todos los componentes de una aplicación de golpe (partiendo de una imagen docker), se generan nuevos componentes conocidos como ImageStreams.
 
-<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="600">
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="650">
 
 Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (partiendo de una imagen docker) es el siguiente:
 
 <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creacion_app_de_imagen.png" width="800">
+
+Como se observa, al partir de una imagen docker, se generan a mayores los siguientes componentes:
+* BuildConfig
+* Build
+* Pod del Build
+* ImageStream
+* ImageStreamTag
+* Pod del Deployment o del DeploymentConfig (depende de qué se genere, en el diagrama de ejemplo se generó un DeploymentConfig)
 
 #### 2.3.1. Procedimiento a partir de una imagen en DockerHub
 
