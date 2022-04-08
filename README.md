@@ -38,6 +38,10 @@ Imágenes preparadas para OpenShift:
 
 * **Ciclo de vida**
 
+  Los componentes de OpenShift (buildconfig, build, deployment, replicaset, pod, service, route, imagestream, imagestreamtag, configmap, secret...) pueden ser creados de **forma imperativa** (informando sus campos en la propia instrucción de creación) o de **forma declarativa** (mediante el uso de YAML).
+
+  Al crear un componente de forma declarativa se indica su estado deseado y OpenShift (al igual que Kubernetes) hará lo posible en todo momento para alcanzar dicho estado.
+
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png)
 
 * **Problemas de los pods**
@@ -79,13 +83,17 @@ Imágenes preparadas para OpenShift:
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png)
 
-* Los componentes de OpenShift (buildconfig, build, deployment, replicaset, pod, service, route, imagestream, imagestreamtag, configmap, secret...) pueden ser creados de **forma imperativa** (informando sus campos en la propia instrucción de creación) o de **forma declarativa** (mediante el uso de YAML).
+#### 1.4.5. Componentes de una aplicación
 
-* Al crear un componente de forma declarativa se indica su estado deseado y OpenShift (al igual que Kubernetes) hará lo posible en todo momento para alcanzar dicho estado.
+* **Componentes a crear al crear una aplicación**
+
+  NOTA: La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+
+  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png)
+
+
 
 * Los pods deben tener un puerto por encima del 1024.
-
-* La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
 * Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
 
