@@ -3,21 +3,21 @@
 ## 1. Introducción
 
 ### 1.1. Resumen organización empresas:
-* 1 entorno (TST, PRE o PRO) contiene n datacenters
-* 1 datacenter contiene n clusters (normalmente hay un único cluster por datacenter)
-* 1 aplicación contiene n componentes
-* 1 aplicación expone n servicios
+* Un entorno (TST, PRE o PRO) contiene n datacenters
+* Un datacenter contiene n clusters (normalmente hay un único cluster por datacenter)
+* Una aplicación contiene n componentes
+* Una aplicación expone n servicios
 
 ### 1.2. Resumen Kubernetes / OpenShift:
-* 1 project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
-* 1 cluster contiene n nodos
-* 1 nodo contiene n pods (configurados con los deployments)
-* 1 deployment es una configuración para levantar réplicas de pods en el cluster
-* 1 pod contiene n contenedores docker (aunque casi siempre contiene sólo 1 contenedor)
-* 1 contenedor docker es 1 imagen docker en ejecución.
-* 1 service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado 1 deployment y hace de intermediario con los pods replicados de un deployment)
-* 1 route es la alternativa de OpenShift a los ingress de Kubernetes
-* 1 route es un mapeo de 1 tupla [URL + puerto] a 1 service
+* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
+* Un cluster contiene n nodos
+* Un nodo contiene n pods (configurados con los deployments)
+* Un deployment es una configuración para levantar réplicas de pods en el cluster
+* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor)
+* Un contenedor docker es una imagen docker en ejecución.
+* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment)
+* Una route es la alternativa de OpenShift a los ingress de Kubernetes
+* Una route es un mapeo de una tupla [URL + puerto] a un service
 
 ### 1.3. Repositorios de imágenes:
 Imágenes docker:
