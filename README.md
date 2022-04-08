@@ -76,7 +76,11 @@ Imágenes preparadas para OpenShift:
 
 * **Solución a los problemas de los services (con routes)**
 
-  Los problemas de los services se solucionan creando n routes para los n services. El flujo es el siguiente:
+  Los problemas de los services se solucionan creando n routes para los n services.
+  
+  La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+  
+  El flujo es el siguiente:
   1. El cliente llama al DNS con un dominio concreto para obtener la IP del servidor web.
   2. El cliente llama a la IP del servidor web (usando el puerto 80) pasándole la URL solicitada.
   3. El servidor web llama a la ruta asociada a la URL solicitada y puerto 80.
@@ -87,13 +91,19 @@ Imágenes preparadas para OpenShift:
 
 #### 1.4.5. Componentes de una aplicación
 
-* **Componentes a crear al crear una aplicación**
+* **Componentes obligatorios al crear una aplicación**
 
   Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
-
-  La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+  
+  Como se comentó anteriormente, la creación de la route es opcional y manual.
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png)
+
+* **BuildConfig y Build (componentes opcionales al crear una aplicación)**
+
+  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png)
+
+  ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png)
 
 #### 1.4.6. ConfigMaps y Secrets
 
