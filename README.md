@@ -288,6 +288,10 @@ oc rsh blog2-5dbf79c66d-b8tgn
   BLOG2_SERVICE_PORT=8080
   ...
   ```
+* **(app-root) sh-4.2$** echo $BLOG2_SERVICE_PORT
+  ```
+  8080
+  ```
 
 * **(app-root) sh-4.2$** exit
   ```
