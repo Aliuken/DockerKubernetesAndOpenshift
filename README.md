@@ -30,6 +30,13 @@ Imágenes preparadas para OpenShift:
 
 ### 1.4. Teoría extendida
 
+#### 1.4.1. Pods
+
+Descripción general
+
+
+* Los pods deben tener un puerto por encima del 1024.
+
 * La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
 * Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
