@@ -236,7 +236,7 @@ nginx1-route   nginx1-route-p1.apps-crc.testing          nginx1-svc   30205     
 
 Al generar todos los componentes de una aplicación de golpe (partiendo de una imagen docker), se generan nuevos componentes conocidos como ImageStreams.
 
-<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="650">
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="700">
 
 Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (partiendo de una imagen docker) es el siguiente:
 
