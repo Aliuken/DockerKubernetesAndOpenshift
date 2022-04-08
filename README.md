@@ -103,7 +103,7 @@ Especificación de Open Container Intitiative:
   
   La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
   
-  El flujo es el siguiente:
+  El flujo final es el siguiente:
   1. El cliente llama al DNS con un dominio concreto para obtener la IP del servidor web.
   2. El cliente llama a la IP del servidor web (usando el puerto 80) pasándole la URL solicitada.
   3. El servidor web llama a la ruta asociada a la URL solicitada y puerto 80.
