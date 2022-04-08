@@ -2,13 +2,22 @@
 
 ## 1. Introducción
 
-### 1.1. Resumen organización empresas:
+### 1.1. Repositorios de imágenes:
+Imágenes docker:
+* https://hub.docker.com/
+
+Imágenes preparadas para OpenShift:
+* https://quay.io/
+* https://catalog.redhat.com/software/containers/search
+* https://www.softwarecollections.org/en/
+
+### 1.2. Resumen organización empresas:
 * Un entorno (TST, PRE o PRO) contiene n datacenters
 * Un datacenter contiene n clusters (normalmente hay un único cluster por datacenter)
 * Una aplicación contiene n componentes
 * Una aplicación expone n servicios
 
-### 1.2. Resumen Kubernetes / OpenShift:
+### 1.3. Resumen Kubernetes / OpenShift:
 * Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
 * Un cluster contiene n nodos
 * Un nodo contiene n pods (configurados con los deployments)
@@ -19,15 +28,6 @@
 * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment)
 * Una route es la alternativa de OpenShift a los ingress de Kubernetes
 * Una route es un mapeo de una tupla [URL + puerto] a un service
-
-### 1.3. Repositorios de imágenes:
-Imágenes docker:
-* https://hub.docker.com/
-
-Imágenes preparadas para OpenShift:
-* https://quay.io/
-* https://catalog.redhat.com/software/containers/search
-* https://www.softwarecollections.org/en/
 
 ### 1.4. Teoría extendida
 
