@@ -24,7 +24,7 @@ Especificación de Open Container Intitiative:
 
 ### 1.3. Resumen Kubernetes / OpenShift:
 
-* Acerca de clusters:
+* Acerca de clusters y nodos:
   * Un cluster contiene n nodos.
   * Un nodo contiene n pods (configurados con los deployments).
   * Un pod contiene n contenedores Docker (aunque casi siempre contiene sólo un contenedor Docker).
