@@ -75,7 +75,7 @@ Especificación de Open Container Intitiative:
 
 * **Problemas de los deployments**
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png" width="700">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png" width="650">
 
 #### 1.4.3. Services
 
@@ -85,7 +85,7 @@ Especificación de Open Container Intitiative:
   * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
   * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png" width="700">
+  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png" width="650">
 
 * **Problemas de los services**
 
