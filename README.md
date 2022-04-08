@@ -14,6 +14,7 @@
 * 1 nodo contiene n pods (configurados con los deployments)
 * 1 deployment es una configuración para levantar réplicas de pods en el cluster
 * 1 pod contiene n contenedores docker (aunque casi siempre contiene sólo 1 contenedor)
+* 1 contenedor docker es 1 imagen docker en ejecución.
 * 1 service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado 1 deployment y hace de intermediario con los pods replicados de un deployment)
 * 1 route es la alternativa de OpenShift a los ingress de Kubernetes
 * 1 route es un mapeo de 1 tupla [URL + puerto] a 1 service
