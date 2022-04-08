@@ -29,6 +29,8 @@ Imágenes preparadas para OpenShift:
 * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment
 * Una route es la alternativa de OpenShift a los ingress de Kubernetes
 * Una route es un mapeo de una tupla [URL + puerto] a un service
+* Un ConfigMap es como un fichero de propiedades.
+* Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ### 1.4. Teoría extendida
 
@@ -127,9 +129,9 @@ Imágenes preparadas para OpenShift:
 
 * **Descripción**
 
-  Los ConfigMaps son como ficheros de propiedades.
-
-  Los Secrets son como los ConfigMaps, pero con los datos codificados en Base64 (ojo, no están encriptados).
+  Repaso:
+  * Un ConfigMap es como un fichero de propiedades.
+  * Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ## 2. Flujos de creación de aplicaciones
 
