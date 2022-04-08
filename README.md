@@ -3,6 +3,7 @@
 ## 1. Introducción
 
 ### 1.1. Repositorios de imágenes:
+
 Imágenes docker:
 * https://hub.docker.com/
 
@@ -15,29 +16,52 @@ Especificación de Open Container Intitiative:
 * https://opencontainers.org
 
 ### 1.2. Resumen organización empresas:
+
 * Un entorno (TST, PRE o PRO) contiene n datacenters.
 * Un datacenter contiene n clusters (normalmente hay un único cluster por datacenter).
 * Una aplicación contiene n componentes.
 * Una aplicación expone n servicios.
 
 ### 1.3. Resumen Kubernetes / OpenShift:
-* Un cluster contiene n nodos.
-* Un nodo contiene n pods (configurados con los deployments).
-* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes.
-* Un contenedor docker es una imagen docker en ejecución.
-* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
-* Un deployment es una configuración para levantar réplicas de pods en el cluster.
-* Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
-* Un DeploymentConfig es un componente de OpenShift equivalente a los deployment de Kubernetes, pero con más características (como, por ejemplo, versionado).
-* Un DeploymentConfig contiene n ReplicationControllers, que a su vez contienen m réplicas de pods.
-* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
-* Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
-* Una route es la alternativa de OpenShift a los ingress de Kubernetes.
-* Una route es un mapeo de una tupla [URL + puerto] a un service.
-* Un ConfigMap es como un fichero de propiedades.
-* Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
-### 1.4. Teoría extendida
+* Acerca de clusters:
+  * Un cluster contiene n nodos.
+  * Un nodo contiene n pods (configurados con los deployments).
+  * Un contenedor docker es una imagen docker en ejecución.
+  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
+
+* Acerca de projects:
+  * Los distintos componentes de OpenShift están agrupados en projects.
+  * Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes.
+
+* Acerca de deployments:
+  * Un deployment es una configuración para levantar réplicas de pods en el cluster.
+  * Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
+  * Un DeploymentConfig es un componente de OpenShift equivalente a los deployment de Kubernetes, pero con más características (como, por ejemplo, versionado).
+  * Un DeploymentConfig contiene n ReplicationControllers, que a su vez contienen m réplicas de pods.
+  * No tiene sentido usar Deployments o DeploymentConfigs con más de una réplica para BBDD, salvo que se use un producto como MySQL Galera.
+
+* Acerca de services y routes:
+  * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
+  * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
+  * Una route es la alternativa de OpenShift a los ingress de Kubernetes.
+  * Una route es un mapeo de una tupla [URL + puerto] a un service.
+  * La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente, ya que sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+
+* Acerca de la construcción de imágenes:
+  * Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
+  * Al partir de una imagen Docker, se generan nuevos componentes como ImageStreams, BuildConfigs y Builds.
+  * Un ImageStream puede contener n ImageStreamTags.
+
+* Acerca de otros elementos:
+  * Un ConfigMap es como un fichero de propiedades.
+  * Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
+
+### 1.4. Componentes obligatorios al crear una aplicación
+
+En la siguiente imagen se muestran los componentes obligatorios al crear una aplicación. Como se comentó anteriormente, la creación de la route es opcional y manual.
+
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png" width="800">
 
 #### 1.4.1. Pods
 
@@ -72,8 +96,7 @@ Especificación de Open Container Intitiative:
   * Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
   * Un DeploymentConfig es un componente de OpenShift equivalente a los deployment de Kubernetes, pero con más características (como, por ejemplo, versionado).
   * Un DeploymentConfig contiene n ReplicationControllers, que a su vez contienen m réplicas de pods.
-
-  No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
+  * No tiene sentido usar Deployments o DeploymentConfigs con más de una réplica para BBDD, salvo que se use un producto como MySQL Galera.
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png" width="500">
 
@@ -104,10 +127,9 @@ Especificación de Open Container Intitiative:
   Repaso:
   * Una route es la alternativa de OpenShift a los ingress de Kubernetes.
   * Una route es un mapeo de una tupla [URL + puerto] a un service.
+  * La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente, ya que sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
   Los problemas de los services se solucionan creando n routes para los n services.
-  
-  La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente, ya que sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
   
   El flujo final es el siguiente:
   1. El cliente llama al DNS con un dominio concreto para obtener la IP del servidor web.
@@ -118,29 +140,40 @@ Especificación de Open Container Intitiative:
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png" width="800">
 
-#### 1.4.5. Componentes de una aplicación
+### 1.5. Componentes opcionales al crear una aplicación
 
-* **Componentes obligatorios al crear una aplicación**
+Repaso:
+* Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
+* Al partir de una imagen Docker, se generan nuevos componentes como ImageStreams, BuildConfigs y Builds.
+* Un ImageStream puede contener n ImageStreamTags.
 
-  Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
-  
-  Como se comentó anteriormente, la creación de la route es opcional y manual.
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="700">
 
-  <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png" width="800">
+Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (a partir de una imagen docker) es el siguiente:
 
-* **BuildConfig y Build (componentes opcionales al crear una aplicación)**
+<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creación_app_de_imagen.png" width="800">
+
+Como se observa, al partir de una imagen docker, se generan a mayores los siguientes componentes:
+* BuildConfig
+* Build
+* Pod del Build
+* ImageStream
+* ImageStreamTag
+* Pod del Deployment o del DeploymentConfig (depende de qué se genere, en el diagrama de ejemplo se generó un DeploymentConfig)
+
+#### 1.5.1. BuildConfig y Build
+
+* **Descripción general**
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Estrategias_build.png" width="650">
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="750">
 
-#### 1.4.6. ConfigMaps y Secrets
+### 1.6. ConfigMaps y Secrets
 
-* **Descripción**
-
-  Repaso:
-  * Un ConfigMap es como un fichero de propiedades.
-  * Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
+Repaso:
+* Un ConfigMap es como un fichero de propiedades.
+* Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ## 2. Flujos de creación de aplicaciones
 
@@ -232,23 +265,7 @@ NAME           HOST/PORT                          PATH   SERVICES     PORT    TE
 nginx1-route   nginx1-route-p1.apps-crc.testing          nginx1-svc   30205                 None
 ```
 
-### 2.3. Crear todo lo necesario de golpe (partiendo de una imagen docker)
-
-Al generar todos los componentes de una aplicación de golpe (partiendo de una imagen docker), se generan nuevos componentes conocidos como ImageStreams.
-
-<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Image_streams.png" width="700">
-
-Un ejemplo de flujo completo de generación de todos los componentes de una aplicación de golpe (partiendo de una imagen docker) es el siguiente:
-
-<img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Flujo_creación_app_de_imagen.png" width="800">
-
-Como se observa, al partir de una imagen docker, se generan a mayores los siguientes componentes:
-* BuildConfig
-* Build
-* Pod del Build
-* ImageStream
-* ImageStreamTag
-* Pod del Deployment o del DeploymentConfig (depende de qué se genere, en el diagrama de ejemplo se generó un DeploymentConfig)
+### 2.3. Crear todo lo necesario de golpe (a partir de una imagen Docker)
 
 #### 2.3.1. Procedimiento a partir de una imagen en DockerHub
 
