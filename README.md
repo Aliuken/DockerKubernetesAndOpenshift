@@ -34,6 +34,8 @@ Imágenes preparadas para OpenShift:
 
 * **Descripción general**
 
+  NOTA: Los pods deben tener un puerto por encima del 1024.
+
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Pods.png)
 
 * **Ciclo de vida**
@@ -87,17 +89,19 @@ Imágenes preparadas para OpenShift:
 
 * **Componentes a crear al crear una aplicación**
 
-  NOTA: La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
+  Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
+
+  La creación de la route es opcional. OpenShift fuerza a que (cuando sea necesario crearla) siempre haya que crearla manualmente. Esto es así porque sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png)
 
+#### 1.4.6. ConfigMaps y Secrets
 
+* **Descipción**
 
-* Los pods deben tener un puerto por encima del 1024.
+  Los ConfigMaps son como ficheros de propiedades.
 
-* Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
-
-* Los ConfigMaps son como ficheros de propiedades, mientras que los Secrets son como los ConfigMaps pero con los datos codificados en Base64 (ojo, no están encriptados).
+  Los Secrets son como los ConfigMaps, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
 ## 2. Flujos de creación de aplicaciones
 
