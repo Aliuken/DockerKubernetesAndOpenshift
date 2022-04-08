@@ -15,23 +15,23 @@ Especificación de Open Container Intitiative:
 * https://opencontainers.org
 
 ### 1.2. Resumen organización empresas:
-* Un entorno (TST, PRE o PRO) contiene n datacenters
-* Un datacenter contiene n clusters (normalmente hay un único cluster por datacenter)
-* Una aplicación contiene n componentes
-* Una aplicación expone n servicios
+* Un entorno (TST, PRE o PRO) contiene n datacenters.
+* Un datacenter contiene n clusters (normalmente hay un único cluster por datacenter).
+* Una aplicación contiene n componentes.
+* Una aplicación expone n servicios.
 
 ### 1.3. Resumen Kubernetes / OpenShift:
-* Un cluster contiene n nodos
-* Un nodo contiene n pods (configurados con los deployments)
-* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
-* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker)
-* Un contenedor docker es una imagen docker en ejecución
-* Un deployment es una configuración para levantar réplicas de pods en el cluster
-* Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods
-* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse 
-* Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment
-* Una route es la alternativa de OpenShift a los ingress de Kubernetes
-* Una route es un mapeo de una tupla [URL + puerto] a un service
+* Un cluster contiene n nodos.
+* Un nodo contiene n pods (configurados con los deployments).
+* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes.
+* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
+* Un contenedor docker es una imagen docker en ejecución.
+* Un deployment es una configuración para levantar réplicas de pods en el cluster.
+* Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods.
+* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
+* Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
+* Una route es la alternativa de OpenShift a los ingress de Kubernetes.
+* Una route es un mapeo de una tupla [URL + puerto] a un service.
 * Un ConfigMap es como un fichero de propiedades.
 * Un Secret es como un ConfigMap, pero con los datos codificados en Base64 (ojo, no están encriptados).
 
@@ -42,8 +42,8 @@ Especificación de Open Container Intitiative:
 * **Descripción general**
 
   Repaso:
-  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker)
-  * Un contenedor docker es una imagen docker en ejecución
+  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
+  * Un contenedor docker es una imagen docker en ejecución.
 
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
@@ -66,8 +66,8 @@ Especificación de Open Container Intitiative:
 * **Solución a los problemas de los pods (con deployments)**
 
   Repaso:
-  * Un deployment es una configuración para levantar réplicas de pods en el cluster
-  * Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods
+  * Un deployment es una configuración para levantar réplicas de pods en el cluster.
+  * Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods.
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png)
 
@@ -80,8 +80,8 @@ Especificación de Open Container Intitiative:
 * **Solución a los problemas de los deployments (con services)**
 
   Repaso:
-  * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse
-  * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment
+  * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
+  * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png)
 
@@ -96,8 +96,8 @@ Especificación de Open Container Intitiative:
 * **Solución a los problemas de los services (con routes)**
 
   Repaso:
-  * Una route es la alternativa de OpenShift a los ingress de Kubernetes
-  * Una route es un mapeo de una tupla [URL + puerto] a un service
+  * Una route es la alternativa de OpenShift a los ingress de Kubernetes.
+  * Una route es un mapeo de una tupla [URL + puerto] a un service.
 
   Los problemas de los services se solucionan creando n routes para los n services.
   
@@ -141,7 +141,7 @@ Especificación de Open Container Intitiative:
 ### 2.1. Crear project
 
 Repaso:
-* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
+* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes.
 
 oc new-project p1
 ```
