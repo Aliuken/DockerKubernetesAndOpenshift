@@ -262,24 +262,30 @@ oc rsh blog2-5dbf79c66d-b8tgn
   /opt/app-root/src
   ```
 
-* **(app-root) sh-4.2$** ls -l
+* **(app-root) sh-4.2$** ls -lart
   ```
-  total 76
-  -rwxrwxr-x. 1 default    root  1454 Apr  7 15:04 app.sh
-  drwxrwxr-x. 1 default    root    43 Apr  7 15:06 blog
-  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 configs
-  -rw-rw-r--. 1 default    root   230 Apr  7 15:04 cronjobs.py
-  -rw-r--r--. 1 1000680000 root 44032 Apr  7 15:07 db.sqlite3
-  -rw-rw-r--. 1 default    root  1126 Apr  7 15:04 Dockerfile
-  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 htdocs
-  drwxrwxr-x. 1 default    root    25 Apr  7 15:06 katacoda
-  -rwxrwxr-x. 1 default    root   806 Apr  7 15:04 manage.py
-  drwxrwxr-x. 3 default    root    20 Apr  7 15:06 media
-  -rw-rw-r--. 1 default    root   832 Apr  7 15:04 posts.json
-  -rw-rw-r--. 1 default    root  7861 Apr  7 15:04 README.md
-  -rw-rw-r--. 1 default    root   203 Apr  7 15:04 requirements.txt
-  drwxrwxr-x. 4 default    root    30 Apr  7 15:06 static
+  total 84
+  drwxrwxr-x. 1 default    root    19 Sep  9  2020 .pki
+  -rw-rw----. 1 default    root  1024 Sep 17  2020 .rnd
   drwxrwxr-x. 2 default    root   148 Apr  7 15:04 templates
+  -rw-rw-r--. 1 default    root   203 Apr  7 15:04 requirements.txt
+  -rw-rw-r--. 1 default    root  7861 Apr  7 15:04 README.md
+  -rw-rw-r--. 1 default    root   832 Apr  7 15:04 posts.json
+  -rwxrwxr-x. 1 default    root   806 Apr  7 15:04 manage.py
+  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 htdocs
+  -rw-rw-r--. 1 default    root   230 Apr  7 15:04 cronjobs.py
+  drwxrwxr-x. 2 default    root    25 Apr  7 15:04 configs
+  -rwxrwxr-x. 1 default    root  1454 Apr  7 15:04 app.sh
+  -rw-rw-r--. 1 default    root  1126 Apr  7 15:04 Dockerfile
+  drwxrwxr-x. 4 default    root    57 Apr  7 15:05 .s2i
+  drwxrwxr-x. 1 default    root    28 Apr  7 15:05 ..
+  drwxrwxr-x. 1 default    root    25 Apr  7 15:06 katacoda
+  drwxrwxr-x. 1 default    root    43 Apr  7 15:06 blog
+  drwxrwxr-x. 4 default    root    30 Apr  7 15:06 static
+  drwxrwxr-x. 3 default    root    20 Apr  7 15:06 media
+  -rw-r--r--. 1 1000680000 root 44032 Apr  7 15:07 db.sqlite3
+  -rw-------. 1 1000680000 root    19 Apr  7 15:09 .bash_history
+  drwxrwxr-x. 1 default    root    73 Apr  7 15:09 .
   ```
 
 * **(app-root) sh-4.2$** env
