@@ -18,14 +18,15 @@ Imágenes preparadas para OpenShift:
 * Una aplicación expone n servicios
 
 ### 1.3. Resumen Kubernetes / OpenShift:
-* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
 * Un cluster contiene n nodos
 * Un nodo contiene n pods (configurados con los deployments)
-* Un deployment es una configuración para levantar réplicas de pods en el cluster
-* Un deployment contiene un ReplicaSet
-* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor)
+* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
+* Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker)
 * Un contenedor docker es una imagen docker en ejecución
-* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse (tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment)
+* Un deployment es una configuración para levantar réplicas de pods en el cluster
+* Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods
+* Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse 
+* Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment
 * Una route es la alternativa de OpenShift a los ingress de Kubernetes
 * Una route es un mapeo de una tupla [URL + puerto] a un service
 
@@ -34,6 +35,10 @@ Imágenes preparadas para OpenShift:
 #### 1.4.1. Pods
 
 * **Descripción general**
+
+  Repaso:
+  * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker)
+  * Un contenedor docker es una imagen docker en ejecución
 
   NOTA: Los pods deben tener un puerto por encima del 1024.
 
@@ -55,6 +60,10 @@ Imágenes preparadas para OpenShift:
 
 * **Solución a los problemas de los pods (con deployments)**
 
+  Repaso:
+  * Un deployment es una configuración para levantar réplicas de pods en el cluster
+  * Un deployment contiene un ReplicaSet, que a su vez contiene réplicas de pods
+
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_pod.png)
 
 * **Problemas de los deployments**
@@ -64,6 +73,10 @@ Imágenes preparadas para OpenShift:
 #### 1.4.3. Services
 
 * **Solución a los problemas de los deployments (con services)**
+
+  Repaso:
+  * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse
+  * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment
 
   ![alt text](https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_deployment.png)
 
@@ -76,6 +89,10 @@ Imágenes preparadas para OpenShift:
 #### 1.4.4. Routes
 
 * **Solución a los problemas de los services (con routes)**
+
+  Repaso:
+  * Una route es la alternativa de OpenShift a los ingress de Kubernetes
+  * Una route es un mapeo de una tupla [URL + puerto] a un service
 
   Los problemas de los services se solucionan creando n routes para los n services.
   
@@ -117,6 +134,9 @@ Imágenes preparadas para OpenShift:
 ## 2. Flujos de creación de aplicaciones
 
 ### 2.1. Crear project
+
+Repaso:
+* Un project de OpenShift debe tener asociado "un y sólo un" namespace de Kubernetes
 
 oc new-project p1
 ```
