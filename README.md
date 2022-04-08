@@ -28,6 +28,8 @@ Especificación de Open Container Intitiative:
 * Un pod contiene n contenedores docker (aunque casi siempre contiene sólo un contenedor docker).
 * Un deployment es una configuración para levantar réplicas de pods en el cluster.
 * Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
+* Un DeploymentConfig es un componente de OpenShift equivalente a los deployment de Kubernetes, pero con más características (como, por ejemplo, versionado).
+* Un DeploymentConfig contiene n ReplicationControllers, que a su vez contienen m réplicas de pods.
 * Un service ofrece una IP fija, nombre fijo y puerto fijo al que conectarse.
 * Un service tiene asociado un deployment y hace de intermediario con los pods replicados de un deployment.
 * Una route es la alternativa de OpenShift a los ingress de Kubernetes.
@@ -61,13 +63,15 @@ Especificación de Open Container Intitiative:
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png" width="350">
 
-#### 1.4.2. Deployments
+#### 1.4.2. Deployments y DeploymentConfigs
 
 * **Solución a los problemas de los pods (con deployments)**
 
   Repaso:
   * Un deployment es una configuración para levantar réplicas de pods en el cluster.
   * Un deployment contiene n ReplicaSets, que a su vez contienen m réplicas de pods.
+  * Un DeploymentConfig es un componente de OpenShift equivalente a los deployment de Kubernetes, pero con más características (como, por ejemplo, versionado).
+  * Un DeploymentConfig contiene n ReplicationControllers, que a su vez contienen m réplicas de pods.
 
   No tiene sentido crear más de una réplica de una BD, salvo que se use un producto como MySQL Galera.
 
