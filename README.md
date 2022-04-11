@@ -67,13 +67,26 @@ Los componentes de OpenShift (BuildConfig, Build, Deployment, DeploymentConfig, 
 
 <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ciclo_vida_pod.png" width="800">
 
-### 1.5. Componentes obligatorios al crear una aplicación
+### 1.5. Componentes a crear al crear una aplicación
 
-En la siguiente imagen se muestran los componentes obligatorios al crear una aplicación. Como se comentó anteriormente, la creación de la route es opcional y manual.
+Al crear una aplicación deberían crearse los siguientes componentes:
+* Pods
+* Deployments o DeploymentConfigs
+* ReplicaSets o ReplicationControllers
+* Services
+* Routes (sólo para frontales)
+
+Si la aplicación se crea a partir de una imagen Docker, a mayores se crearán los siguientes componentes:
+* BuildConfigs
+* Builds
+* ImageStreams
+* ImageStreamTags
 
 <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Componentes_a_crear.png" width="800">
 
-#### 1.5.1. Pods
+### 1.6. Componentes obligatorios al crear una aplicación
+
+#### 1.6.1. Pods
 
 * **Descripción general**
 
@@ -89,7 +102,7 @@ En la siguiente imagen se muestran los componentes obligatorios al crear una apl
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_pod.png" width="350">
 
-#### 1.5.2. Deployments y DeploymentConfigs
+#### 1.6.2. Deployments y DeploymentConfigs
 
 * **Solución a los problemas de los pods (con deployments)**
 
@@ -106,7 +119,7 @@ En la siguiente imagen se muestran los componentes obligatorios al crear una apl
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_deployment.png" width="600">
 
-#### 1.5.3. Services
+#### 1.6.3. Services
 
 * **Solución a los problemas de los deployments (con services)**
 
@@ -122,7 +135,7 @@ En la siguiente imagen se muestran los componentes obligatorios al crear una apl
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Problema_servicio.png" width="800">
 
-#### 1.5.4. Routes
+#### 1.6.4. Routes
 
 * **Solución a los problemas de los services (con routes)**
 
@@ -142,7 +155,7 @@ En la siguiente imagen se muestran los componentes obligatorios al crear una apl
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Soluci%C3%B3n_servicio.png" width="800">
 
-### 1.6. Componentes opcionales al crear una aplicación
+### 1.7. Componentes opcionales al crear una aplicación
 
 Repaso:
 * Kubernetes no puede construir imágenes Docker. Para construir imágenes Docker se puede usar Docker o OpenShift.
@@ -163,7 +176,7 @@ Como se observa, al partir de una imagen docker, se generan a mayores los siguie
 * ImageStreamTag
 * Pod del Deployment o del DeploymentConfig (depende de qué se genere, en el diagrama de ejemplo se generó un DeploymentConfig)
 
-#### 1.6.1. BuildConfig y Build
+#### 1.7.1. BuildConfig y Build
 
 * **Descripción general**
 
@@ -171,7 +184,7 @@ Como se observa, al partir de una imagen docker, se generan a mayores los siguie
 
   <img src="https://github.com/Aliuken/Documentacion-docker-kubernetes-y-openshift/blob/main/Ejemplos_build_config.png" width="750">
 
-### 1.7. ConfigMaps y Secrets
+### 1.8. ConfigMaps y Secrets
 
 Repaso:
 * Un ConfigMap es como un fichero de propiedades.
