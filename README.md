@@ -145,7 +145,7 @@ Si la aplicación se crea a partir de una imagen Docker, a mayores se crearán l
   * La creación de las routes es opcional. OpenShift fuerza a que (cuando sea necesario crearlas) siempre haya que crearlas manualmente, ya que sólo deberían crearse routes para los frontales. Por ejemplo, las BBDD no deberían tener routes.
 
   Los problemas de los services se solucionan creando n routes para los n services.
-  
+
   El flujo final es el siguiente:
   1. El cliente llama al DNS con un dominio concreto para obtener la IP del servidor web.
   2. El cliente llama a la IP del servidor web (usando el puerto 80) pasándole la URL solicitada.
